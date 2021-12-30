@@ -33,3 +33,4 @@ en:
   hello: "Hello world"
   baby_name:
     uniq_name: "is already existed in this list."
+    format: "should be formated with letters and (at most) one space."
