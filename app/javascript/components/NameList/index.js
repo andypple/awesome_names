@@ -1,12 +1,44 @@
-import React from "react";
-import { useGetNameListByUidQuery } from "../redux/apis";
+import React, { useState } from "react";
+import {
+  useGetNameListByUidQuery,
+  useCreateBabyNameMutation,
+} from "../redux/apis";
 
 const NameList = () => {
-  const { data, error, isLoading } = useGetNameListByUidQuery(window.location.pathname)
+  const [nameListId, setNameListId] = useState(
+    window.location.pathname.substring(1)
+  );
+  const [name, setName] = useState("");
 
-   return (
+  const { data, error, isLoading } = useGetNameListByUidQuery(nameListId);
+  const [createBabyName, createBabyNameResult] = useCreateBabyNameMutation();
+
+  return (
     <div>
-       <div>
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="button"
+          value="Add new name"
+          onClick={() => {
+            createBabyName({
+              name: name,
+              nameListId: data.id,
+            });
+            setName("")
+          }}
+        />
+        {createBabyNameResult.isError ? (
+          <div>{createBabyNameResult.error.data.error}</div>
+        ) : (
+          null
+        )}
+      </div>
+      <div>
         {error ? (
           <>Oh no, there was an error</>
         ) : isLoading ? (
