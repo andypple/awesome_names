@@ -30,3 +30,7 @@ state should persist across sessions and between users viewing the same list.
 - Real-time updates when multiple people are working on the same list
 - Client-side sorting of names (Alphabetical, By Input Time, By Length)
 - Allow the user to manually prioritize the list using drag-and-drop functionality
+
+### Run local development note
+
+- Please change API_HOST to `http://localhost:3000/api/`. Thanks

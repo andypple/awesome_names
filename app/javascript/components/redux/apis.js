@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const API_HOST = 'http://localhost:3005/api/'
+const API_HOST = 'https://awesome-names.herokuapp.com/api/'
 
 export const apis = createApi({
   reducerPath: 'apis',
