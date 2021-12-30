@@ -25,4 +25,18 @@ RSpec.describe 'NameLists', type: :request do
       end
     end
   end
+
+  describe 'GET /:name_list_id' do
+    context 'when name list is existed' do
+      let!(:name_list1) { create(:name_list, viewed_at: 10.days.ago) }
+      let!(:name_list2) { create(:name_list, viewed_at: 5.days.ago) }
+
+      it 'updates viewed_at when visited a name list' do
+        get '/'
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to("/#{NameList.last.uid}")
+        expect { get "/#{name_list1.uid}" }.to change { name_list1.reload.viewed_at }
+      end
+    end
+  end
 end
