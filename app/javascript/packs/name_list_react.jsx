@@ -1,10 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from '../components/App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { store } from "../components/redux/store";
+import { Provider } from "react-redux";
 
-document.addEventListener('DOMContentLoaded', () => {
+import App from "../components/App";
+
+document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <App />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.body.appendChild(document.createElement("div"))
+  );
+});
