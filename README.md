@@ -31,6 +31,9 @@ state should persist across sessions and between users viewing the same list.
 - Client-side sorting of names (Alphabetical, By Input Time, By Length)
 - Allow the user to manually prioritize the list using drag-and-drop functionality
 
+### Video demo
+https://www.loom.com/share/7f808c83b17147af8545f857939e04c7
+
 ### Run local development note
 
 - Please change API_HOST to `http://localhost:3000/api/`. Thanks
