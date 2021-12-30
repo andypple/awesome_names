@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_042203) do
+ActiveRecord::Schema.define(version: 2021_12_30_060752) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "baby_names", force: :cascade do |t|
+    t.citext "name"
+    t.bigint "name_list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name_list_id", "name"], name: "index_baby_names_on_name_list_id_and_name", unique: true
+    t.index ["name_list_id"], name: "index_baby_names_on_name_list_id"
+  end
 
   create_table "name_lists", force: :cascade do |t|
     t.string "uid", limit: 12, null: false

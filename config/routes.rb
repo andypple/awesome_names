@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :name_lists, only: [:show]
+    resources :baby_names, only: [:create]
   end
 end
