@@ -37,6 +37,16 @@ RSpec.describe 'NameLists', type: :request do
         expect(response).to redirect_to("/#{NameList.last.uid}")
         expect { get "/#{name_list1.uid}" }.to change { name_list1.reload.viewed_at }
       end
+
+      it 'renders name list show page' do
+        get '/'
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to("/#{NameList.last.uid}")
+
+        follow_redirect!
+
+        expect(response.body).to include("Hello, Baby Name App")
+      end
     end
 
     context 'when name list is not existed' do

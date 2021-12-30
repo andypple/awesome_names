@@ -6,7 +6,6 @@ class NameListsController < ApplicationController
   def show
     if @name_list.present?
       @name_list.touch(:viewed_at) # rubocop:disable Rails/SkipsModelValidations
-      render json: {}
     else
       redirect_to "/#{NameList.most_recently_view.uid}"
     end
