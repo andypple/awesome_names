@@ -1,5 +1,7 @@
 module Api
   class BabyNamesController < ActionController::API
+    before_action :trim_name!
+
     def create
       baby_name = BabyName.create(create_params)
       if baby_name.save
@@ -11,8 +13,12 @@ module Api
 
     private
 
+    def trim_name!
+      create_params[:name] = create_params[:name]&.strip
+    end
+
     def create_params
-      params.require(:baby_name).permit(:name, :name_list_id)
+      @create_params ||= params.require(:baby_name).permit(:name, :name_list_id)
     end
   end
 end
