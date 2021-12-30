@@ -37,6 +37,5 @@ yarn-debug.log*
 
 .keep
 !app/assets/images/.keep
-bin/*
 
 /config/credentials/development.key
