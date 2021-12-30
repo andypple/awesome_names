@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  baby_name:
+    uniq_name: "is already existed in this list."
