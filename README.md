@@ -32,7 +32,9 @@ state should persist across sessions and between users viewing the same list.
 - Allow the user to manually prioritize the list using drag-and-drop functionality
 
 ### Video demo
-https://www.loom.com/share/7f808c83b17147af8545f857939e04c7
+- https://www.loom.com/share/7f808c83b17147af8545f857939e04c7
+
+- Heroku link: https://awesome-names.herokuapp.com/
 
 ### Run local development note
 
