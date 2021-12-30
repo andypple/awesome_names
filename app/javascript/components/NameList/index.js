@@ -1,43 +1,17 @@
 import React, { useState } from "react";
-import {
-  useGetNameListByUidQuery,
-  useCreateBabyNameMutation,
-} from "../redux/apis";
+import { useGetNameListByUidQuery } from "../redux/apis";
+
+import Form from "./Form";
 
 const NameList = () => {
   const [nameListId, setNameListId] = useState(
     window.location.pathname.substring(1)
   );
-  const [name, setName] = useState("");
-
   const { data, error, isLoading } = useGetNameListByUidQuery(nameListId);
-  const [createBabyName, createBabyNameResult] = useCreateBabyNameMutation();
 
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="button"
-          value="Add new name"
-          onClick={() => {
-            createBabyName({
-              name: name,
-              nameListId: data.id,
-            });
-            setName("")
-          }}
-        />
-        {createBabyNameResult.isError ? (
-          <div>{createBabyNameResult.error.data.error}</div>
-        ) : (
-          null
-        )}
-      </div>
+      <Form nameListId={data?.id} />
       <div>
         {error ? (
           <>Oh no, there was an error</>
