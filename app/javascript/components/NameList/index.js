@@ -7,7 +7,10 @@ const NameList = () => {
   const [nameListId, setNameListId] = useState(
     window.location.pathname.substring(1)
   );
-  const { data, error, isLoading } = useGetNameListByUidQuery(nameListId);
+  const { data, error, isLoading } = useGetNameListByUidQuery(nameListId, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 1000,
+  });
 
   return (
     <div>
@@ -19,9 +22,9 @@ const NameList = () => {
           <>Loading...</>
         ) : data ? (
           <>
-          <h3>Baby list name</h3>
-          {data.baby_names.map(babyName => (
-              <div key={babyName.id}> { babyName.name } </div>
+            <h3>Baby list name</h3>
+            {data.baby_names.map((babyName) => (
+              <div key={babyName.id}> {babyName.name} </div>
             ))}
           </>
         ) : null}
