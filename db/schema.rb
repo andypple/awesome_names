@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_30_040549) do
+ActiveRecord::Schema.define(version: 2021_12_30_042203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_12_30_040549) do
     t.string "uid", limit: 12, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "viewed_at", null: false
     t.index ["uid"], name: "index_name_lists_on_uid", unique: true
   end
 
