@@ -19,8 +19,10 @@ const NameList = () => {
           <>Loading...</>
         ) : data ? (
           <>
-            <h3>{data.uid}</h3>
-            <h3>{data.viewed_at}</h3>
+          <h3>Baby list name</h3>
+          {data.baby_names.map(babyName => (
+              <div key={babyName.id}> { babyName.name } </div>
+            ))}
           </>
         ) : null}
       </div>
