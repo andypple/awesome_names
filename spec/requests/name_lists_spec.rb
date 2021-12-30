@@ -38,5 +38,17 @@ RSpec.describe 'NameLists', type: :request do
         expect { get "/#{name_list1.uid}" }.to change { name_list1.reload.viewed_at }
       end
     end
+
+    context 'when name list is not existed' do
+      it 'redirects to most recenty view' do
+        get '/'
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to("/#{NameList.last.uid}")
+
+        get "/not_exist_name_list"
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to("/#{NameList.last.uid}")
+      end
+    end
   end
 end
